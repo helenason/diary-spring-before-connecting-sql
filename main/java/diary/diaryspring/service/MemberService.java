@@ -17,16 +17,22 @@ public class MemberService {
     }
 
     public String join(Member member) { // 회원가입
-        checkSameId(member);
-        mr.save(member);
-        return member.getId();
+//        if (!checkSameId(member.getId())) {
+            mr.save(member);
+            return member.getId();
+//        } else {
+//            return "";
+//        }
     }
 
-    public void checkSameId(Member member) { // 중복 ID 체크
+    public boolean checkSameId(String id) { // 중복 ID 체크
+        /**
         mr.findById(member.getId())
                 .ifPresent(m -> {
                     throw new IllegalStateException("이미 존재하는 회원");
                 });
+         **/
+        return mr.findById(id).isPresent();
     }
 
     public String login(String id, String pw) { // 로그인 (위치가 여기가 맞나..?)
@@ -34,12 +40,12 @@ public class MemberService {
         Optional<Member> exist = mr.findById(id);
         if (exist.isPresent()) {
             if (exist.get().getPw().equals(pw)) {
-                return "로그인 성공!";
+                return "로그인 성공";
             } else {
-                return "비밀번호 확인 부탁";
+                return "비밀번호 체크";
             }
         } else {
-            return "없는 계정입니다.";
+            return "없는 계정";
         }
     }
 }

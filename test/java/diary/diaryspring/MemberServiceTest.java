@@ -70,7 +70,7 @@ public class MemberServiceTest {
         String result = ms.login(member.getId(), member.getPw());
 
         //then
-        assertThat(result).isEqualTo("로그인 성공!");
+        assertThat(result).isEqualTo("로그인 성공");
     }
 
     @Test
@@ -85,7 +85,7 @@ public class MemberServiceTest {
 
         //then
         String result = ms.login("id", "other");
-        assertThat(result).isEqualTo("비밀번호 확인 부탁");
+        assertThat(result).isEqualTo("비밀번호 체크");
     }
 
     @Test
@@ -99,7 +99,7 @@ public class MemberServiceTest {
         String result = ms.login(member.getId(), member.getPw());
 
         //then
-        assertThat(result).isEqualTo("없는 계정입니다.");
+        assertThat(result).isEqualTo("없는 계정");
     }
 }
 

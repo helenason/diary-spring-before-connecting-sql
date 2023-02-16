@@ -1,9 +1,9 @@
 package diary.diaryspring.domain;
 
 public class Member {
-    public String id;
-    public String pw;
-    public String name;
+    private String id;
+    private String pw;
+    private String name;
 
     public String getId() {
         return id;
