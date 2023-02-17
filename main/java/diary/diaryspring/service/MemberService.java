@@ -40,7 +40,8 @@ public class MemberService {
         Optional<Member> exist = mr.findById(id);
         if (exist.isPresent()) {
             if (exist.get().getPw().equals(pw)) {
-                return "로그인 성공";
+//                return "로그인 성공";
+                return exist.get().getName() + "님 환영합니다.";
             } else {
                 return "비밀번호 체크";
             }
